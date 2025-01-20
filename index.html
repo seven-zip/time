@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>online status probably</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #333; 
+            color: white; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="status">Checking...</h1>
+    <p id="time"></p>
+    <script>
+        const schedule = {
+            Monday: [
+                { start: 7, end: 8 },
+                { start: 18, end: 24 },
+                { start: 0, end: 1 }
+            ],
+            Tuesday: [
+                { start: 10, end: 14 },
+                { start: 18, end: 24 },
+                { start: 0, end: 1 }
+            ],
+            Wednesday: [
+                { start: 7, end: 8 },
+                { start: 15, end: 24 },
+                { start: 0, end: 1 }
+            ],
+            Thursday: [
+                { start: 7, end: 8 },
+                { start: 12.5, end: 14 },
+                { start: 18, end: 24 },
+                { start: 0, end: 1 }
+            ],
+            Friday: [
+                { start: 0, end: 2 }
+            ],
+            Saturday: [
+                { start: 0, end: 2 }
+            ],
+            Sunday: [
+                { start: 0, end: 1 }
+            ]
+        };
+
+        function getStatus() {
+            const now = new Date();
+            const yourTimeZone = "Europe/London";
+            const timeInYourZone = new Date(
+                now.toLocaleString("en-US", { timeZone: yourTimeZone })
+            );
+            const hour = timeInYourZone.getHours();
+            const minute = timeInYourZone.getMinutes();
+            const day = timeInYourZone.toLocaleString("en-US", {
+                weekday: "long",
+                timeZone: yourTimeZone
+            });
+
+            const time = hour + minute / 60;
+            const currentSchedule = schedule[day] || [];
+            const isOnline = currentSchedule.some(
+                period => time >= period.start && time < period.end
+            );
+
+            return isOnline ? "probably online" : "probably not online";
+        }
+
+        function updateStatus() {
+            const now = new Date();
+            const status = getStatus();
+            document.getElementById("status").innerText = `seven is ${status}`;
+            document.getElementById("time").innerText = `current time is: ${now.toLocaleString()}`;
+        }
+
+        setInterval(updateStatus, 1000);
+        updateStatus(); /* ai generated btw */
+    </script>
+</body>
+</html> 
