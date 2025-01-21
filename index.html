@@ -11,13 +11,27 @@
             color: white; 
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 20%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1, p {
+            margin: 0.5em 0;
         }
         .disclaimer {
             font-size: 0.8em;
             color: #aaa;
-            margin-top: 50px;
-            padding: 0 20px;
+            line-height: 1.2;
+            position: fixed;
+            bottom: 20px; /* Adjusted for better visibility */
+            left: 50%;
+            transform: translateX(-50%); /* Centers it horizontally */
+            width: 90%; /* Ensures it fits well on mobile */
+            max-width: 500px; /* Limiting width for larger screens */
+            text-align: center;
+            padding: 0 10px;
         }
     </style>
 </head>
@@ -91,9 +105,10 @@
         updateStatus(); /* ai generated btw */
     </script>
     <div class="disclaimer">
-        The information presented on this website regarding my online or offline status is provided "as is" and for informational purposes only. No warranties, express or implied, are made as to the accuracy, completeness, reliability, or timeliness of the information displayed.<br><br>
-        I disclaim all liability for any errors, inaccuracies, or omissions in the displayed status and for any reliance placed upon it by users. Under no circumstances shall I be held responsible or liable for any damages, losses, or consequences arising directly or indirectly from the use of, or reliance upon, this information.<br><br>
-        By accessing this website, you acknowledge and agree to these terms and conditions. If you require confirmation of my online or offline status, it is your responsibility to verify this through direct and independent means.
+        The information presented on this website about my online status is "as is" and for informational purposes only.<br>
+        I disclaim liability for any inaccuracies, errors, or omissions, and reliance upon this information is at your own risk.<br>
+        Damages or losses arising from the use of this website are not my responsibility.<br>
+        Verify my online status independently if required.
     </div>
 </body>
 </html>
